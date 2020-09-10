@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :menus do
     resources :menu_reviews
     member do
+      get :confirm
       post :order
     end
   end

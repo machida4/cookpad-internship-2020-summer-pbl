@@ -24,11 +24,26 @@ class MenusController < ApplicationController
     redirect_to '/'
   end
 
+  def confirm
+    @menu = Menu.find(params[:id])
+  end
+
   def order
+    @menu = Menu.find(params[:id])
+
     # 注文処理
-    if true
+    user_purchase_history = UserPurchaseHistory.new
+    user_purchase_history.user = User.first
+    user_purchase_history.store = Store.first
+    user_purchase_history.menu = @menu
+
+    user_purchase_history.status = UserPurchaseHistory::Status::PREPARING
+
+    if user_purchase_history.save
       user_purchase_history_id = 10
       redirect_to root_path, notice: "注文を完了しました。お店に確認中です。"
+    else
+      # TODO
     end
   end
 

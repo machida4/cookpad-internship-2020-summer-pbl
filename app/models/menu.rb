@@ -1,7 +1,7 @@
 class Menu < ApplicationRecord
   has_many :menu_reviews
 
-  belongs_to :user_purchase_history, optional: true
+  has_many :user_purchase_histories
   belongs_to :store
 
   mount_uploader :image, ImageUploader
