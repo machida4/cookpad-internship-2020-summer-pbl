@@ -1,29 +1,43 @@
 = image_tag 'cooking.png', class: 'img-fluid'
 
 .p-3.container
-  %h1
-    新着
-  - Menu.all.limit(6).order(:id).each_slice(2) do |m1, m2|
-    .row
-      .col-6
+  %h3.mt-1
+    お近くの人気セット
+  %p.text-right
+    = link_to "もっと見る >", menus_path
+  // TODO: キョリと評価でソート
+  - Menu.all.limit(4).order(:id).each do |menu|
+    .row.py-1
+      .col-12
         .card
-          = image_tag m1.image.url, style: 'width="180";height="180"', class: 'card-img-top'
-          .card-body
-            .card-title
-              = m1.name
-            .card-subtitle
-              = m1.name
-            .card-text
-              テスト
-            = link_to "詳細を見る", menu_path(m1), class: 'btn btn-primary'
-      .col-6
+          .d-flex.shadow-sm
+            = image_tag menu.image.url, style: 'width: 45%;height: auto'
+            .card-body
+              %h5.card-title
+                = menu.name
+              %h6.card-subtitle.mb-2.text-muted
+                = menu.description
+              %p.card-text
+                テスト
+              = link_to "詳細を見る", menu_path(menu), class: 'btn btn-primary'
+
+  %h3.mt-5
+    お近くの新着セット
+  %p.text-right
+    = link_to "もっと見る >", menus_path
+  // TODO: キョリと評価でソート
+  - Menu.all.limit(4).order(:id).each do |menu|
+    .row.py-1
+      .col-12
         .card
-          = image_tag m2.image.url, class: 'card-img-top'
-          .card-body
-            .card-title
-              =m2.name
-            .card-subtitle
-              = m2.name
-            .card-text
-              テスト
-            = link_to "詳細を見る", menu_path(m2), class: 'btn btn-primary'
+          .d-flex.shadow-sm
+            = image_tag menu.image.url, style: 'width: 45%;height: auto'
+            .card-body
+              %h5.card-title
+                = menu.name
+              %h6.card-subtitle.mb-2.text-muted
+                = menu.description
+              %p.card-text
+                テスト
+              = link_to "詳細を見る", menu_path(menu), class: 'btn btn-primary'
+
