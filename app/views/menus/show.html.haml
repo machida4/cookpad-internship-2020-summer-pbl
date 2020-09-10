@@ -1,0 +1,52 @@
+
+.jumbotron
+  %h1
+    ご注文
+
+.p-3.container
+  %h3.pb-2
+    セット
+  = image_tag @menu.image.url, style: 'width: 80%;height: auto'
+  %table.table.table-hover.my-4
+    %tbody
+      %tr
+        %th
+          セット名
+        %td
+          = @menu.name
+      %tr
+        %th
+          概要
+        %td
+          = @menu.description
+      %tr
+        %th
+          所要時間
+        %td
+          = @menu.time
+      %tr
+        %th
+          食材一覧
+        %td
+          = @menu.ingredients_text
+      %tr
+        %th
+          レシピ
+        %td
+          = @menu.recipe_text
+  %h3
+    店舗情報
+  %table.table.table-hover.my-4
+    %tbody
+      %tr
+        %th
+          店舗名
+        %td
+          = @menu.store.name
+      %tr
+        %th
+          店舗概要
+        %td
+          = @menu.store.description
+      -# 地図を貼る
+  = link_to '注文する', order_menu_path(@menu), method: :post, class: 'btn btn-primary ml-1'

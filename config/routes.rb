@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   resources :users
   resources :menus do
     resources :menu_reviews
+    member do
+      post :order
+    end
   end
   resources :stores
   resources :user_purchase_histories

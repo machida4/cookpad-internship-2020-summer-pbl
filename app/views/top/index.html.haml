@@ -6,9 +6,11 @@
   %p.ml-2.text-muted
     レシピを選んで注文するだけ！
     %br
-    お近くの提携店舗で食材が受け取れます。
+    お近くの提携店舗でレシピに必要な食材が受け取れます。
 
 .p-3.container
+  - if flash.notice.present?
+    .alert.alert-success= flash.notice
   %h3.mt-1
     お近くの新着セット
   %p.text-right
@@ -26,9 +28,21 @@
               %h6.card-subtitle.mb-2.text-muted
                 = menu.description
               %p.card-text
-                テスト
-                = icon 'far', 'file-alt'
-              = link_to "詳細を見る", menu_path(menu), class: 'btn btn-primary'
+                -# レビュー評価の平均値分だけ星を出す
+                -# TODO: 整理する, DRYにする
+                - quo, mod = star_numbers(menu.average_star)
+                - quo.times do |i|
+                  = icon 'fas', 'star'
+                - mod.times do |i|
+                  = icon 'fas', 'star-half-alt'
+                - (5 - (quo + mod)).times do |i|
+                  = icon 'far', 'star'
+                %span
+                  .d-inline
+                    = icon 'fas', 'map-marker-alt'
+                  .d-inline.text-muted
+                    = "#{rand(1..10) * 100} M"
+              = link_to "注文画面に進む", menu_path(menu), class: 'btn btn-primary'
   %h3.mt-5
     お近くの評価が高いセット
   %p.text-right
@@ -45,7 +59,20 @@
                 = menu.name
               %h6.card-subtitle.mb-2.text-muted
                 = menu.description
-              %p.card-text
-                テスト
-              = link_to "詳細を見る", menu_path(menu), class: 'btn btn-primary'
+              %p.card-text.pt-1
+                -# レビュー評価の平均値分だけ星を出す
+                - quo, mod = star_numbers(menu.average_star)
+                - quo.times do |i|
+                  = icon 'fas', 'star'
+                - mod.times do |i|
+                  = icon 'fas', 'star-half-alt'
+                - (5 - (quo + mod)).times do |i|
+                  = icon 'far', 'star'
+                %br
+                %span
+                  .d-inline
+                    = icon 'fas', 'map-marker-alt'
+                  .d-inline.text-muted
+                    = "#{rand(1..10) * 100} M"
+              = link_to "注文画面に進む", menu_path(menu), class: 'btn btn-primary'
 

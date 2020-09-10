@@ -9,6 +9,10 @@ class MenusController < ApplicationController
     end
   end
 
+  def show
+    @menu = Menu.find(params[:id])
+  end
+
   def new
     @menu = Menu.new()
   end
@@ -18,6 +22,14 @@ class MenusController < ApplicationController
     menu.save!
     # TODO: indexに飛ばす
     redirect_to '/'
+  end
+
+  def order
+    # 注文処理
+    if true
+      user_purchase_history_id = 10
+      redirect_to root_path, notice: "注文を完了しました。お店に確認中です。"
+    end
   end
 
   private
