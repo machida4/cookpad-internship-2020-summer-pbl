@@ -13,6 +13,6 @@ class MenusController < ApplicationController
   private
 
   def menu_params
-    params.require(:menu).permit(:name, :time, :price, :ingredients_text, :recipe_text, :image)
+    params.require(:menu).permit(:store_id, :name, :time, :price, :ingredients_text, :recipe_text, :image)
   end
 end
