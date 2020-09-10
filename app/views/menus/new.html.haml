@@ -1,0 +1,21 @@
+= form_with model: @menu, local: true do |f|
+  .form-group
+    = f.label "名前"
+    = f.text_field :name, class: 'form-control'
+  .form-group
+    = f.label "値段"
+    = f.text_field :price, class: 'form-control'
+  .form-group
+    = f.label "所要時間"
+    = f.text_field :time, class: 'form-control'
+  .form-group
+    = f.label "材料"
+    = f.text_area :ingredients_text, class: 'form-control'
+  .form-group
+    = f.label "レシピ"
+    = f.text_area :recipe_text, class: 'form-control'
+  .form-group
+    = f.label "画像"
+    = f.file_field :image, accept: "image/png,image/gif,image/jpeg", class: 'form-control'
+  .actions
+    = f.submit nil, class: 'btn btn-primary'

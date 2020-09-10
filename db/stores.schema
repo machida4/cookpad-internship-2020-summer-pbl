@@ -5,7 +5,7 @@ create_table "stores", id: :integer, force: :cascade do |t|
   t.float "latitude"
   t.float "longitude"
 
-  t.string "image_path"
+  t.string "image"
 
   # t.integer "status"
 
