@@ -1,4 +1,6 @@
 create_table "menus", id: :integer, force: :cascade do |t|
+  t.integer "store_id", null: false
+
   t.string "name", null: false
 
   t.string "time", limit: 128, null: false
