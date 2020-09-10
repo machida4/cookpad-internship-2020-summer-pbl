@@ -1,0 +1,13 @@
+create_table "menu_reviews", id: :integer, force: :cascade do |t|
+  t.integer "user_id", null: false
+  t.integer "menu_id", null: false
+
+  t.integer "star", null: false
+  t.string "description", limit: 512
+
+  t.datetime "created_at", null: false
+  t.datetime "updated_at", null: false
+end
+
+add_index "menu_reviews", ["user_id"], name: "users_idx", using: :btree
+add_index "menu_reviews", ["menu_id"], name: "menus_idx", using: :btree

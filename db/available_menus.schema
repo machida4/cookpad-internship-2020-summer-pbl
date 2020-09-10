@@ -1,0 +1,10 @@
+create_table "available_menus", id: :integer, force: :cascade do |t|
+  t.integer "store_id", null: false
+  t.integer "menu_id", null: false
+
+  t.datetime "created_at", null: false
+  t.datetime "updated_at", null: false
+end
+
+add_index "available_menus", ["store_id"], name: "stores_idx", using: :btree
+add_index "available_menus", ["menu_id"], name: "menus_idx", using: :btree
