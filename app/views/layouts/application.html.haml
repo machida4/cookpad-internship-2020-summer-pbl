@@ -20,13 +20,16 @@
       %button.navbar-toggler.collapsed{"aria-controls": "navbarSupportedContent", "aria-expanded": "false", "aria-label": "Toggle navigation", "data-target": "#navbarSupportedContent", "data-toggle": "collapse", type: "button"}
         %span.navbar-toggler-icon
       #navbarSupportedContent.collapse.navbar-collapse
-        %ul.navbar-nav
+        %ul.navbar-nav.mr-auto
           %li.nav-item
-            %a.nav-link{:href => "#"} メニューＡ
+            = link_to "お近くの評価が高いセット", menus_path(op: "highly_rated"), class: 'nav-link'
           %li.nav-item
-            %a.nav-link{:href => "#"} メニューＢ
+            = link_to "お近くの新着セット", menus_path(op: "latest"), class: 'nav-link'
           %li.nav-item
-            %a.nav-link{:href => "#"} メニューＣ
+            = link_to "注文履歴", user_purchase_histories_path, class: 'nav-link'
+          %li.nav-item
+            -# TODO
+            = link_to "マイページ", user_path(1), class: 'nav-link'
         %p.navbar-text.navbar-right
           ようこそ
           %a.navbar-link{:href => "#"} ゲスト

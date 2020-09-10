@@ -1,11 +1,19 @@
 = image_tag 'cooking.png', class: 'img-fluid'
 
+.jumbotron
+  %h1
+    NeighborFood
+  %p.ml-2.text-muted
+    レシピを選んで注文するだけ！
+    %br
+    お近くの提携店舗で食材が受け取れます。
+
 .p-3.container
   %h3.mt-1
-    お近くの人気セット
+    お近くの新着セット
   %p.text-right
-    = link_to "もっと見る >", menus_path
-  // TODO: キョリと評価でソート
+    = link_to "もっと見る >", menus_path(op: "latest")
+  // TODO: キョリとcreated_atでソート
   - Menu.all.limit(4).order(:id).each do |menu|
     .row.py-1
       .col-12
@@ -20,11 +28,10 @@
               %p.card-text
                 テスト
               = link_to "詳細を見る", menu_path(menu), class: 'btn btn-primary'
-
   %h3.mt-5
-    お近くの新着セット
+    お近くの評価が高いセット
   %p.text-right
-    = link_to "もっと見る >", menus_path
+    = link_to "もっと見る >", menus_path(op: "highly_rated")
   // TODO: キョリと評価でソート
   - Menu.all.limit(4).order(:id).each do |menu|
     .row.py-1
