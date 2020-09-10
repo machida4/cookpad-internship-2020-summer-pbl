@@ -1,1 +1,29 @@
 = image_tag 'cooking.png', class: 'img-fluid'
+
+.p-3.container
+  %h1
+    新着
+  - Menu.all.limit(6).order(:id).each_slice(2) do |m1, m2|
+    .row
+      .col-6
+        .card
+          = image_tag m1.image.url, style: 'width="180";height="180"', class: 'card-img-top'
+          .card-body
+            .card-title
+              = m1.name
+            .card-subtitle
+              = m1.name
+            .card-text
+              テスト
+            = link_to "詳細を見る", menu_path(m1), class: 'btn btn-primary'
+      .col-6
+        .card
+          = image_tag m2.image.url, class: 'card-img-top'
+          .card-body
+            .card-title
+              =m2.name
+            .card-subtitle
+              = m2.name
+            .card-text
+              テスト
+            = link_to "詳細を見る", menu_path(m2), class: 'btn btn-primary'

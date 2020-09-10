@@ -16,23 +16,25 @@ store = Store.create(
   description: '愛されて300年！ 営業時間：8:00 ~ 23:00',
 )
 
-menu = Menu.create(
-  name: 'かんたんカレー',
-  time: '20分',
-  price: '300円',
+10.times do |index|
+  Menu.create(
+    name: "かんたんカレー#{index}",
+    time: '20分',
+    price: '300',
+    image: open("#{Rails.root}/db/fixtures/curry.jpg"),
 
-  ingredients_text:
-    "豚こま: 40g,
-    じゃがいも: 1/2個,
-    にんじん: 1/2本,
-    たまねぎ: 1/2個,
-    カレールウ: 2切れ
-    ",
-  recipe_text:
-    "カレーカレーカレー
-    カレーカレーカレー
-    カレーカレーカレー
-    カレーカレーカレー
-    ",
-  image: 'uploads/menu/'
+    ingredients_text:
+      "豚こま: 40g,
+      じゃがいも: 1/2個,
+      にんじん: 1/2本,
+      たまねぎ: 1/2個,
+      カレールウ: 2切れ
+      ",
+    recipe_text:
+      "カレーカレーカレー
+      カレーカレーカレー
+      カレーカレーカレー
+      カレーカレーカレー
+      ",
   )
+end
