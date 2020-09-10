@@ -27,3 +27,5 @@ Things you may want to cover:
 
 * `$ sudo apt-get install  imagemagick`
 * `$ sudo apt-get install libmagickwand-dev`
+
+ストアレビューは時間の都合上なしに

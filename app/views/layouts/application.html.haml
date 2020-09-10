@@ -13,6 +13,23 @@
     = stylesheet_link_tag 'application', media: 'all'
     = javascript_pack_tag 'application'
   %body
-    .app-title.navbar.navbar-expand-md.navbar-light.bg-light
-      .nav
+    %nav.navbar.navbar-light.bg-light
+      %a.navbar-brand{href: '/'}
+        = image_tag "logo-black.png", width: "40px"
+        NeighborFood
+      %button.navbar-toggler.collapsed{"aria-controls": "navbarSupportedContent", "aria-expanded": "false", "aria-label": "Toggle navigation", "data-target": "#navbarSupportedContent", "data-toggle": "collapse", type: "button"}
+        %span.navbar-toggler-icon
+      #navbarSupportedContent.collapse.navbar-collapse
+        %ul.navbar-nav
+          %li.nav-item
+            %a.nav-link{:href => "#"} メニューＡ
+          %li.nav-item
+            %a.nav-link{:href => "#"} メニューＢ
+          %li.nav-item
+            %a.nav-link{:href => "#"} メニューＣ
+        %p.navbar-text.navbar-right
+          ようこそ
+          %a.navbar-link{:href => "#"} ゲスト
+          さん。
+
     = yield
