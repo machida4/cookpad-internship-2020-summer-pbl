@@ -1,3 +1,14 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  root to: 'top#index'
+
+  resources :users
+  resources :menus do
+    resources :menu_reviews
+    member do
+      get :confirm
+      post :order
+    end
+  end
+  resources :stores
+  resources :user_purchase_histories
 end

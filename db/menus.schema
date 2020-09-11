@@ -1,14 +1,17 @@
 create_table "menus", id: :integer, force: :cascade do |t|
-  t.integer "name", null: false
+  t.integer "store_id", null: false
 
-  t.integer "level", null: false
+  t.string "name", limit: 256, null: false
+  t.string "description", limit: 256
+
   t.string "time", limit: 128, null: false
-  t.integer "price", null: false
 
   t.string "ingredients_text", limit: 1024
   t.string "recipe_text", limit: 2048
 
-  t.string "image_path"
+  t.string "image"
+
+  t.integer "price", null: false
 
   # t.integer "status"
 

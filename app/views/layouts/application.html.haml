@@ -1,0 +1,38 @@
+!!!
+
+= stylesheet_link_tag 'application', media: 'all'
+= javascript_include_tag 'application'
+= javascript_pack_tag 'application'
+
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title NeighborFood
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag 'application', media: 'all'
+    = javascript_pack_tag 'application'
+  %body
+    %nav.navbar.navbar-light.bg-light
+      %a.navbar-brand{href: '/'}
+        = image_tag "logo-black.png", width: "40px"
+        NeighborFood
+      %button.navbar-toggler.collapsed{"aria-controls": "navbarSupportedContent", "aria-expanded": "false", "aria-label": "Toggle navigation", "data-target": "#navbarSupportedContent", "data-toggle": "collapse", type: "button"}
+        %span.navbar-toggler-icon
+      #navbarSupportedContent.collapse.navbar-collapse
+        %ul.navbar-nav.mr-auto
+          %li.nav-item
+            = link_to "お近くの評価が高いセット", menus_path(op: "highly_rated"), class: 'nav-link'
+          %li.nav-item
+            = link_to "お近くの新着セット", menus_path(op: "latest"), class: 'nav-link'
+          %li.nav-item
+            = link_to "注文履歴", user_purchase_histories_path, class: 'nav-link'
+          %li.nav-item
+            -# TODO
+            = link_to "マイページ", user_path(1), class: 'nav-link'
+        %p.navbar-text.navbar-right
+          ようこそ
+          %a.navbar-link{:href => "#"} ゲスト
+          さん。
+
+    = yield

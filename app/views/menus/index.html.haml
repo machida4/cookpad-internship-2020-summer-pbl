@@ -1,0 +1,35 @@
+.p-3.container
+  %h3.mt-1
+    - if params[:op] == 'highly_rated'
+      お近くの評価が高いセット一覧
+    - elsif params[:op] == 'latest'
+      お近くの新着セット一覧
+    - else
+      メニュー一覧
+  - @menus.each do |menu|
+    .row.py-1
+      .col-12
+        .card
+          .d-flex.shadow.rounded
+            = image_tag menu.image.url, style: 'width: 45%;height: auto'
+            .card-body
+              %h5.card-title
+                = menu.name
+              %h6.card-subtitle.mb-2.text-muted
+                = menu.description
+              %p.card-text
+                -# レビュー評価の平均値分だけ星を出す
+                -# TODO: 整理する, DRYにする
+                - quo, mod = star_numbers(menu.average_star)
+                - quo.times do |i|
+                  = icon 'fas', 'star'
+                - mod.times do |i|
+                  = icon 'fas', 'star-half-alt'
+                - (5 - (quo + mod)).times do |i|
+                  = icon 'far', 'star'
+                %span
+                  .d-inline
+                    = icon 'fas', 'map-marker-alt'
+                  .d-inline.text-muted
+                    = "#{rand(1..10) * 100} M"
+              = link_to "詳細を見る", menu_path(menu), class: 'btn btn-primary'

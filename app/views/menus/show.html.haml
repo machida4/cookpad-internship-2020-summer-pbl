@@ -1,0 +1,72 @@
+
+.jumbotron
+  %h1
+    = @menu.name
+
+.p-3.container
+  = image_tag @menu.image.url, style: 'width: 80%;height: auto'
+  %h3
+    セット情報
+  %table.table.table-hover.my-4
+    %tbody
+      %tr
+        %th
+          セット名
+        %td
+          = @menu.name
+      %tr
+        %th
+          概要
+        %td
+          = @menu.description
+      %tr
+        %th
+          所要時間
+        %td
+          = @menu.time
+      %tr
+        %th
+          食材一覧
+        %td
+          = @menu.ingredients_text
+      %tr
+        %th
+          レシピ
+        %td
+          = @menu.recipe_text
+  %h3
+    店舗情報
+  %table.table.table-hover.my-4
+    %tbody
+      %tr
+        %th
+          店舗名
+        %td
+          = @menu.store.name
+      %tr
+        %th
+          評価
+        %td
+          = icon 'fas', 'star'
+          = icon 'fas', 'star'
+          = icon 'fas', 'star'
+          = icon 'fas', 'star'
+          = icon 'fas', 'star-half-alt'
+      %tr
+        %th
+          店舗概要
+        %td
+          = @menu.store.description
+  %h3
+    ご請求額
+    %table.table.table-hover.my-4
+      %tbody
+        %tr
+          %td
+            = "￥ #{@menu.price}"
+  %h3
+    地図（デモ）
+  %p.ml-2
+    = image_tag 'map_demo.png', style: 'width: 80%;height: auto'
+
+  = link_to '注文画面に進む', confirm_menu_path(@menu), class: 'btn btn-primary ml-1'
