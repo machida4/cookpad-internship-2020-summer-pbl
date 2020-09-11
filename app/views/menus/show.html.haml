@@ -28,12 +28,12 @@
         %th
           食材一覧
         %td
-          = @menu.ingredients_text
+          = simple_format(@menu.ingredients_text)
       %tr
         %th
           レシピ
         %td
-          = @menu.recipe_text
+          = simple_format(@menu.recipe_text)
   %h3
     店舗情報
   %table.table.table-hover.my-4
