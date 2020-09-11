@@ -3,6 +3,8 @@
     注文履歴
 
 .p-3.container
+  - if flash.notice.present?
+    .alert.alert-success= flash.notice
   %h3
     完了していない注文
   - @user_purchase_histories.each do |history|

@@ -123,3 +123,16 @@ menus.each do |menu|
 
   review.save!
 end
+
+UserPurchaseHistory.create(
+  user_id: user.id,
+  store_id: store.id,
+  menu_id: menus[3].id,
+  status: UserPurchaseHistory::Status::SUCCESS
+)
+UserPurchaseHistory.create(
+  user_id: user.id,
+  store_id: store.id,
+  menu_id: menus[2].id,
+  status: UserPurchaseHistory::Status::CANCELLED
+)

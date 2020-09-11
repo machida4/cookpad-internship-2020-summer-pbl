@@ -41,7 +41,7 @@ class MenusController < ApplicationController
 
     if user_purchase_history.save
       user_purchase_history_id = 10
-      redirect_to root_path, notice: "注文を完了しました。お店に確認中です。"
+      redirect_to user_purchase_histories_path, notice: "注文を完了しました。お店に確認中です。"
     else
       # TODO
     end
