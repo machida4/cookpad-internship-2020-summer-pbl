@@ -1,0 +1,2 @@
+module UserPurchaseHistoryHelper
+end

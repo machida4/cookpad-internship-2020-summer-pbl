@@ -1,0 +1,63 @@
+.jumbotron
+  %h1
+    注文履歴
+
+.p-3.container
+  %h3
+    完了していない注文
+  - @user_purchase_histories.each do |history|
+    .row
+      .col-12
+        .card.bg-light
+          .card-body
+            %h5.card-title
+              = link_to history.menu.name, menu_path(history.menu), class: 'text-dark'
+            %h6.card-subtitle.mb-2.text-muted.mt-3
+              - if history.status == UserPurchaseHistory::Status::PREPARING
+                %span.badge.badge-primary
+                  お店に確認中
+              - elsif history.status == UserPurchaseHistory::Status::WAITING
+                %span.badge.badge-success
+                  受け渡し待機中
+              - elsif history.status == UserPurchaseHistory::Status::SUCCESS
+                %span.badge.badge-secondary
+                  受け渡し完了済み
+              - elsif history.status == UserPurchaseHistory::Status::CANCELLED
+                %span.badge.badge-danger
+                  キャンセル済み
+              -# TODO: 元気があったらlocaleに変える
+              = "￥#{history.menu.price}"
+              .span
+                = history.created_at.strftime('%Y/%m/%d %H:%M:%S')
+            %p.card-text
+              = link_to history.store.name, store_path(history.store), class: 'text-muted'
+
+  %h3.mt-4
+    完了済みの注文
+  - @old_user_purchase_histories.each do |history|
+    .row
+      .col-12
+        .card.bg-light
+          .card-body
+            %h5.card-title
+              = link_to history.menu.name, menu_path(history.menu), class: 'text-dark'
+            %h6.card-subtitle.mb-2.text-muted.mt-3
+              - if history.status == UserPurchaseHistory::Status::PREPARING
+                %span.badge.badge-primary
+                  お店に確認中
+              - elsif history.status == UserPurchaseHistory::Status::WAITING
+                %span.badge.badge-success
+                  受け渡し待機中
+              - elsif history.status == UserPurchaseHistory::Status::SUCCESS
+                %span.badge.badge-secondary
+                  受け渡し完了済み
+              - elsif history.status == UserPurchaseHistory::Status::CANCELLED
+                %span.badge.badge-danger
+                  キャンセル済み
+              = "￥#{history.menu.price}"
+              .span
+                -# TODO: 元気があったらlocaleに変える
+                = history.created_at.strftime('%Y/%m/%d %H:%M:%S')
+            %p.card-text
+              = link_to history.store.name, store_path(history.store), class: 'text-muted'
+
